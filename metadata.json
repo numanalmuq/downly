@@ -1,0 +1,6 @@
+{
+  "name": "DOWNLY - Universal Media Downloader",
+  "description": "Unduh video dan audio MP4 / MP3 berkualitas tinggi dari TikTok, Instagram, YouTube, Spotify, Twitter/X, Facebook, dan platform populer lainnya dengan cepat dan gratis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
