@@ -71,15 +71,17 @@ export default function App() {
     };
   }, []);
 
-  // Initialize theme from localStorage
+  // Initialize theme: Light theme is primary default
   useEffect(() => {
     const savedTheme = localStorage.getItem('downly_theme') as 'light' | 'dark' | null;
-    const initialTheme = savedTheme || 'light';
+    const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
     setTheme(initialTheme);
     if (initialTheme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   }, []);
 
@@ -89,8 +91,10 @@ export default function App() {
     localStorage.setItem('downly_theme', newTheme);
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   };
 
@@ -285,12 +289,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#E5E5E0] dark:bg-[#0A0A0A] text-black dark:text-white flex flex-col justify-between selection:bg-[#FFE600] selection:text-black font-sans">
-      {/* Mobile Frame Container: Pure 390px Mobile Viewport with Editorial Frame */}
-      <div className="w-full max-w-[430px] mx-auto min-h-screen bg-[#F5F3EE] dark:bg-[#121212] border-x-[3px] border-black dark:border-white shadow-[6px_0_0_#000] dark:shadow-[6px_0_0_#fff] flex flex-col relative pb-20">
+    <div className="min-h-screen bg-[#F4F4F0] dark:bg-[#0A0A0A] text-black dark:text-white flex flex-col justify-between selection:bg-[#FFE600] selection:text-black font-sans">
+      {/* Mobile & Desktop Viewport with Editorial Frame */}
+      <div className="w-full max-w-[460px] sm:max-w-[500px] mx-auto min-h-screen bg-white dark:bg-[#121212] border-x-[3px] border-black dark:border-white shadow-[6px_0_0_#000] dark:shadow-[6px_0_0_#fff] flex flex-col relative pb-20">
         
         {/* Editorial Top Navigation */}
-        <header className="sticky top-0 z-40 bg-[#F5F3EE] dark:bg-[#121212] border-b-[3px] border-black dark:border-white px-4 py-3 flex items-center justify-between">
+        <header className="sticky top-0 z-40 bg-white dark:bg-[#121212] border-b-[3px] border-black dark:border-white px-4 py-3 flex items-center justify-between">
           {/* Logo with Asterisk */}
           <div
             className="flex items-center gap-2 cursor-pointer select-none"
@@ -600,7 +604,7 @@ export default function App() {
         {/* Mobile Bottom Dock Navigation (Strict Physical Feel) */}
         <nav
           id="mobile-bottom-dock"
-          className="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-[#F5F3EE] dark:bg-[#121212] border-t-[3px] border-x-[3px] border-black dark:border-white p-2 z-40 shadow-[0_-4px_0_#000] flex items-center justify-between gap-1"
+          className="fixed bottom-0 left-0 right-0 max-w-[460px] sm:max-w-[500px] mx-auto bg-white dark:bg-[#121212] border-t-[3px] border-x-[3px] border-black dark:border-white p-2 z-40 shadow-[0_-4px_0_#000] flex items-center justify-between gap-1"
         >
           <button
             type="button"
